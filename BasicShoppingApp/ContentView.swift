@@ -13,6 +13,14 @@ struct ContentView: View {
     @State var products = [Product]()
     /// The variable that holds the loading state of the products
     @State var isLoading = false
+    /// The text from SearchBar
+    @State var searchTerm = ""
+    
+    /// Filtered products from products array
+    var filteredProducts: [Product] {
+        guard !searchTerm.isEmpty else { return products }
+        return products.filter({ $0 .title.localizedCaseInsensitiveContains(searchTerm) })
+    }
     
     let layout = [
         GridItem(.flexible(minimum: 100)),
@@ -28,29 +36,42 @@ struct ContentView: View {
                 NavigationStack {
                     ScrollView {
                         LazyVGrid(columns: layout, content: {
-                            ForEach(products) { product in
-                                VStack {
-                                    
-                                    let imageURL = URL(string: product.thumbnail)
-                                    
-                                    AsyncImage(url: imageURL) { image in
-                                        image
-                                            .resizable()
-                                            .frame(width: 120, height: 120)
-                                            .aspectRatio(contentMode: .fit)
-                                            .clipShape(Circle(), style: FillStyle())
-                                    } placeholder: {
-                                        Circle()
-                                            .frame(width: 120, height: 120)
-                                            .foregroundStyle(.secondary)
-                                    }
+                            ForEach(filteredProducts) { product in
+                                
+                                NavigationLink(destination: ProductDetailView(product: product)) {
+                                    VStack {
+                                        
+                                        let imageURL = URL(string: product.thumbnail)
+                                        
+                                        AsyncImage(url: imageURL) { image in
+                                            image
+                                                .resizable()
+                                                .frame(width: 120, height: 120)
+                                                .aspectRatio(contentMode: .fit)
+                                                .clipShape(Circle(), style: FillStyle())
+                                        } placeholder: {
+                                            Circle()
+                                                .frame(width: 120, height: 120)
+                                                .foregroundStyle(.secondary)
+                                        }
 
-                                    
-                                    Text(product.title)
-                                    Text("\(product.price)")
+                                        
+                                        Text(product.title)
+                                            .foregroundStyle(Color.black)
+                                            .bold()
+                                        Text("\(product.price)")
+                                            .foregroundStyle(Color.black)
+                                    }
                                 }
                             }
                         })
+                    }
+                    .navigationTitle("Products")
+                    .searchable(text: $searchTerm, prompt: "Search Products")
+                    .overlay {
+                        if !searchTerm.isEmpty && filteredProducts.isEmpty {
+                            ContentUnavailableView.search(text: searchTerm)
+                        }
                     }
                 }
             }

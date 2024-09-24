@@ -11,6 +11,7 @@
 		EDE76A0D2C9F8F0A0002CEEE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE76A0C2C9F8F0A0002CEEE /* ContentView.swift */; };
 		EDE76A0F2C9F8F0C0002CEEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDE76A0E2C9F8F0C0002CEEE /* Assets.xcassets */; };
 		EDE76A122C9F8F0C0002CEEE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDE76A112C9F8F0C0002CEEE /* Preview Assets.xcassets */; };
+		EDEF2E022CA33C49002DB8D3 /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEF2E012CA33C49002DB8D3 /* ProductDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		EDE76A0C2C9F8F0A0002CEEE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EDE76A0E2C9F8F0C0002CEEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EDE76A112C9F8F0C0002CEEE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EDEF2E012CA33C49002DB8D3 /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				EDE76A0A2C9F8F0A0002CEEE /* BasicShoppingAppApp.swift */,
 				EDE76A0C2C9F8F0A0002CEEE /* ContentView.swift */,
+				EDEF2E012CA33C49002DB8D3 /* ProductDetailView.swift */,
 				EDE76A0E2C9F8F0C0002CEEE /* Assets.xcassets */,
 				EDE76A102C9F8F0C0002CEEE /* Preview Content */,
 			);
@@ -139,6 +142,7 @@
 			files = (
 				EDE76A0D2C9F8F0A0002CEEE /* ContentView.swift in Sources */,
 				EDE76A0B2C9F8F0A0002CEEE /* BasicShoppingAppApp.swift in Sources */,
+				EDEF2E022CA33C49002DB8D3 /* ProductDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
