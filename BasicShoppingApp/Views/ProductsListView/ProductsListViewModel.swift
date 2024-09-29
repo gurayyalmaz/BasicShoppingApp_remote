@@ -11,6 +11,14 @@ final class ProductsListViewModel: ObservableObject {
     
     private var networkManager = ShoppingAppNM()
     
+    // formatter viewModel'da olmamali extention olarak view'da olmali
+    var formatter: NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 2
+        return formatter
+    }
+    
     /// The array that holds the decoded products received from the server
     @Published var products = [Product]()
     /// The text from SearchBar
@@ -25,11 +33,6 @@ final class ProductsListViewModel: ObservableObject {
     init() {
         fetchProducts()
     }
-    
-//    init(products: [Product] = [Product](), searchTerm: String = "") {
-//        self.products = products
-//        self.searchTerm = searchTerm
-//    }
     
     func fetchProducts() {
         Task {

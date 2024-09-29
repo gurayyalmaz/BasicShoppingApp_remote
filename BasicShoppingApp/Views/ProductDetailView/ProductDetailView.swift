@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct ProductDetailView: View {
     
@@ -16,17 +17,11 @@ struct ProductDetailView: View {
         let imageURL = URL(string: product.thumbnail)
         
         VStack {
-            AsyncImage(url: imageURL) { image in
-                image
-                    .resizable()
-                    .frame(width: 300, height: 300)
-                    .aspectRatio(contentMode: .fit)
-                    .clipShape(Circle(), style: FillStyle())
-            } placeholder: {
-                Circle()
-                    .frame(width: 300, height: 300)
-                    .foregroundStyle(.secondary)
-            }
+            WebImage(url: imageURL)
+                .resizable()
+                .frame(width: 300, height: 300)
+                .aspectRatio(contentMode: .fit)
+                .clipShape(Circle(), style: FillStyle())
             Text(product.title)
             Text("\(product.price)")
 
@@ -39,7 +34,8 @@ struct ProductDetailView_PreviewProvider: PreviewProvider {
         let sampleProduct = Product(id: 1,
                                     title: "Sample product title",
                                     price: 0.99,
-                                    thumbnail: "https://picsum.photos/200")
+                                    thumbnail: "https://picsum.photos/200",
+                                    rating: 4.44)
         
         ProductDetailView(product: sampleProduct)
     }

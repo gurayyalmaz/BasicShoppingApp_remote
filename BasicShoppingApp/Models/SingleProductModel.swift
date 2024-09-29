@@ -12,5 +12,6 @@ struct Product: Codable, Hashable, Identifiable {
     let title: String
     let price: Double
     let thumbnail: String
+    let rating: Double
 }
 
